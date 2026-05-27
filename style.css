@@ -1,0 +1,309 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  overflow:hidden;
+  font-family:Arial, sans-serif;
+  background:
+  radial-gradient(circle at top, #1f4068, #07111f 70%);
+  height:100vh;
+  color:white;
+}
+
+.scene{
+  position:relative;
+  width:100%;
+  height:100vh;
+}
+
+/* HEADER */
+
+header{
+  position:absolute;
+  top:40px;
+  width:100%;
+  text-align:center;
+  z-index:10;
+}
+
+header h1{
+  font-size:4rem;
+  letter-spacing:6px;
+  color:#00ffe5;
+  text-shadow:
+  0 0 20px #00ffe5,
+  0 0 40px #00ffe5;
+}
+
+header p{
+  margin-top:10px;
+  color:#ffffffcc;
+  font-size:1.2rem;
+}
+
+/* CIDADE */
+
+.city{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:35%;
+  background:
+  linear-gradient(to top,#0f2027,#203a43,#2c5364);
+  clip-path:polygon(
+    0 100%,0 60%,10% 40%,15% 70%,
+    25% 30%,35% 60%,45% 20%,55% 70%,
+    65% 30%,75% 60%,85% 20%,100% 50%,
+    100% 100%
+  );
+  box-shadow:0 0 50px #00f0ff66;
+}
+
+/* ÁRVORES */
+
+.trees{
+  position:absolute;
+  bottom:120px;
+  width:100%;
+  display:flex;
+  justify-content:space-around;
+}
+
+.tree{
+  width:50px;
+  height:120px;
+  background:#3d2b1f;
+  position:relative;
+  border-radius:10px;
+}
+
+.tree::before{
+  content:'';
+  position:absolute;
+  width:120px;
+  height:120px;
+  background:radial-gradient(circle,#00ff88,#009966);
+  border-radius:50%;
+  left:-35px;
+  top:-70px;
+  box-shadow:0 0 30px #00ff88;
+}
+
+/* ATLETAS */
+
+.athletes{
+  position:absolute;
+  bottom:180px;
+  width:100%;
+}
+
+.athlete{
+  position:absolute;
+  font-size:5rem;
+  animation:bounce 2s infinite alternate;
+  filter:drop-shadow(0 0 20px cyan);
+}
+
+.running{
+  left:15%;
+}
+
+.cycling{
+  left:45%;
+}
+
+.basketball{
+  right:15%;
+}
+
+@keyframes bounce{
+  from{
+    transform:translateY(0);
+  }
+  to{
+    transform:translateY(-25px);
+  }
+}
+
+/* ALIMENTOS */
+
+.food{
+  position:absolute;
+  font-size:3rem;
+  animation:float 6s infinite ease-in-out;
+}
+
+.apple{
+  left:20%;
+  top:30%;
+}
+
+.avocado{
+  right:25%;
+  top:20%;
+}
+
+.carrot{
+  left:60%;
+  top:25%;
+}
+
+.orange{
+  right:10%;
+  top:40%;
+}
+
+@keyframes float{
+  0%{
+    transform:translateY(0px) rotate(0deg);
+  }
+  50%{
+    transform:translateY(-30px) rotate(10deg);
+  }
+  100%{
+    transform:translateY(0px) rotate(0deg);
+  }
+}
+
+/* DRONES */
+
+.drone{
+  position:absolute;
+  width:80px;
+  height:25px;
+  background:#00e5ff;
+  border-radius:20px;
+  box-shadow:0 0 20px #00e5ff;
+}
+
+.drone::before,
+.drone::after{
+  content:'';
+  position:absolute;
+  width:20px;
+  height:20px;
+  border:3px solid white;
+  border-radius:50%;
+  top:-8px;
+}
+
+.drone::before{
+  left:-15px;
+}
+
+.drone::after{
+  right:-15px;
+}
+
+.drone1{
+  top:15%;
+  left:10%;
+  animation:fly 10s infinite linear;
+}
+
+.drone2{
+  top:25%;
+  right:15%;
+  animation:fly2 12s infinite linear;
+}
+
+@keyframes fly{
+  0%{
+    transform:translateX(0);
+  }
+  50%{
+    transform:translateX(200px);
+  }
+  100%{
+    transform:translateX(0);
+  }
+}
+
+@keyframes fly2{
+  0%{
+    transform:translateX(0);
+  }
+  50%{
+    transform:translateX(-250px);
+  }
+  100%{
+    transform:translateX(0);
+  }
+}
+
+/* HOLOGRAMAS */
+
+.hologram{
+  position:absolute;
+  width:180px;
+  height:180px;
+  border:2px solid #00ffff;
+  border-radius:50%;
+  box-shadow:0 0 30px #00ffff;
+  animation:rotate 8s linear infinite;
+}
+
+.holo1{
+  top:20%;
+  left:35%;
+}
+
+.holo2{
+  top:50%;
+  right:20%;
+}
+
+@keyframes rotate{
+  from{
+    transform:rotate(0deg);
+  }
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+/* IA CORE */
+
+.ai-core{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:120px;
+  height:120px;
+  background:radial-gradient(circle,#00fff7,#005eff);
+  border-radius:50%;
+  box-shadow:
+  0 0 30px #00fff7,
+  0 0 60px #00fff7;
+}
+
+.pulse{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  border:4px solid #00fff7;
+  animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+  from{
+    transform:scale(1);
+    opacity:1;
+  }
+  to{
+    transform:scale(1.8);
+    opacity:0;
+  }
+}
+
+/* PARTÍCULAS */
+
+#particles{
+  position:absolute;
+  width:100%;
+  height:100%;
+}
