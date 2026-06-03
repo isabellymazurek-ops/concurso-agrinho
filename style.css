@@ -1,120 +1,348 @@
-/* ==========================================================================
-   PALETA DE CORES FUTURISTA & CONFIGURAÇÕES GERAIS
-   ========================================================================== */
+/* --- PALETA MODERNIZADA E ANIMAÇÕES --- */
 :root {
-    --primary: #00e676;       /* Verde Neon para destaques tecnológicos */
-    --primary-dark: #1b5e20;  /* Verde Floresta Profundo */
-    --secondary: #00b0ff;    /* Azul Tecnológico/Água */
-    --dark-bg: #0a192f;       /* Fundo Dark Moderno para seções especiais */
-    --light-bg: #f7fbf7;      /* Fundo Claro Limpo */
-    --text-dark: #1e293b;     /* Texto principal */
-    --text-light: #f8fafc;    /* Texto claro */
-    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --primary: #1b5e20;
+    --primary-light: #4caf50;
+    --gradient-agro: linear-gradient(135deg, #2e7d32 0%, #115e59 100%);
+    --gradient-btn: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+    --gradient-accent: linear-gradient(135deg, #ffb300 0%, #ff8f00 100%);
+    --dark: #0a2f1d;
+    --text: #2d3748;
+    --bg: #f0f7f4;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pop {
+    0% { transform: scale(0.95); }
+    100% { transform: scale(1); }
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    scroll-behavior: smooth;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
 }
 
 body {
-    background-color: var(--light-bg);
-    color: var(--text-dark);
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
     overflow-x: hidden;
 }
 
-/* ==========================================================================
-   HEADER HERO (IMPACTANTE & INTRIGANTE)
-   ========================================================================== */
+/* --- TOPO INOVADOR --- */
 header {
-    background: linear-gradient(135deg, rgba(27, 94, 32, 0.9), rgba(10, 25, 47, 0.85)), 
-                url('https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1200&q=80') no-repeat center/cover;
-    color: var(--text-light);
+    background: linear-gradient(rgba(10, 47, 29, 0.75), rgba(10, 47, 29, 0.85)), url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1200&q=80') no-repeat center/cover;
+    color: white;
     text-align: center;
     padding: 120px 20px;
     position: relative;
-    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
 }
 
 header h1 {
     font-size: 3.5rem;
     font-weight: 800;
-    letter-spacing: -1px;
     margin-bottom: 15px;
-    text-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-
-header h1 span {
-    color: var(--primary);
+    letter-spacing: -1px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 header p {
-    font-size: 1.25rem;
-    max-width: 700px;
-    margin: 0 auto 25px;
+    font-size: 1.3rem;
+    max-width: 750px;
+    margin: 0 auto;
     opacity: 0.9;
 }
 
-/* ==========================================================================
-   MENU DE NAVEGAÇÃO REIDRATADO
-   ========================================================================== */
+/* --- MENU NAVEGAÇÃO INTERATIVO --- */
 nav {
-    background: rgba(27, 94, 32, 0.95);
+    background-color: rgba(10, 47, 29, 0.95);
     backdrop-filter: blur(10px);
     position: sticky;
     top: 0;
     z-index: 1000;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
 nav a {
-    color: var(--text-light);
+    color: #e2e8f0;
     padding: 18px 22px;
     text-decoration: none;
     font-weight: 600;
     font-size: 0.95rem;
-    transition: var(--transition);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+nav a:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 4px;
+    background: var(--primary-light);
+    transition: all 0.3s;
+    transform: translateX(-50%);
 }
 
 nav a:hover {
-    color: var(--primary);
-    background: rgba(25, 118, 210, 0.1);
+    color: #fff;
+    background-color: rgba(255,255,255,0.05);
 }
 
-/* ==========================================================================
-   LAYOUT CONTEÚDO & SEÇÕES
-   ========================================================================== */
+nav a:hover:after {
+    width: 80%;
+}
+
+/* --- CARDS E CONTEÚDO --- */
 .container {
-    max-width: 1200px;
-    margin: 60px auto;
-    padding: 0 25px;
+    max-width: 1140px;
+    margin: 50px auto;
+    padding: 0 20px;
 }
 
 section {
-    background: #ffffff;
-    padding: 45px;
+    background: white;
+    padding: 40px;
     border-radius: 20px;
     margin-bottom: 50px;
-    box-shadow: var(--card-shadow);
-    transition: var(--transition);
-    border: 1px solid rgba(0,0,0,0.03);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeIn 0.6s ease-out;
 }
 
 section:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(46, 125, 50, 0.08);
 }
 
 h2 {
-    color: var(--primary-dark);
+    color: var(--primary);
     font-size: 2rem;
     margin-bottom: 25px;
-    position: relative;
-    display:
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+h2::before {
+    content: '🌱';
+}
+
+/* --- GRID DE MÍDIA DINÂMICA --- */
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.media-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+    border: 1px solid #edf2f7;
+}
+
+.media-card:hover {
+    transform: scale(1.03);
+}
+
+.media-card img, .media-card video {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+.media-card p {
+    padding: 20px;
+    font-weight: 600;
+    background: #fff;
+}
+
+/* --- ARTIGOS CIENTÍFICOS ESTILO BANCO DE IDEIAS --- */
+.artigo {
+    background: #f8fafc;
+    border-left: 6px solid var(--primary-light);
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 4px 16px 16px 4px;
+    transition: background 0.2s;
+}
+
+.artigo:hover {
+    background: #f1f5f9;
+}
+
+.artigo-tag {
+    background: var(--gradient-accent);
+    color: white;
+    padding: 4px 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+/* --- BLOCO SAÚDE --- */
+.bloco-destaque {
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+    padding: 25px;
+    border-radius: 16px;
+    border-right: 6px solid #f59e0b;
+}
+
+/* --- GAMIFICAÇÃO (QUIZ DO AGRO) --- */
+.game-container {
+    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+    padding: 40px;
+    border-radius: 24px;
+    text-align: center;
+    border: 2px dashed #0284c7;
+}
+
+.quiz-btn {
+    background: var(--gradient-btn);
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 50px;
+    margin: 10px;
+    box-shadow: 0 4px 15px rgba(46,125,50,0.25);
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.quiz-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 20px rgba(46,125,50,0.4);
+}
+
+.quiz-btn:active { transform: scale(0.98); }
+
+#resultado-quiz {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    animation: pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* --- CHATBOT GAMIFICADO (ESTILO WHATSAPP/DISCORD) --- */
+.chat-box {
+    border: none;
+    border-radius: 24px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+.chat-content {
+    flex: 1;
+    padding: 25px;
+    overflow-y: auto;
+    background: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.chat-input-area {
+    display: flex;
+    padding: 15px;
+    background: white;
+    border-top: 1px solid #f1f5f9;
+}
+
+.chat-input-area input {
+    flex: 1;
+    padding: 16px 24px;
+    border: 2px solid #e2e8f0;
+    outline: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.chat-input-area input:focus {
+    border-color: var(--primary-light);
+}
+
+.chat-input-area button {
+    background: var(--gradient-btn);
+    color: white;
+    border: none;
+    padding: 0 30px;
+    margin-left: 10px;
+    border-radius: 30px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.chat-input-area button:hover {
+    transform: scale(1.05);
+}
+
+.msg {
+    padding: 12px 18px;
+    border-radius: 18px;
+    max-width: 75%;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    animation: pop 0.25s ease-out;
+}
+
+.msg.user {
+    background: var(--gradient-btn);
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+}
+
+.msg.bot {
+    background: #fff;
+    color: var(--text);
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+    border: 1px solid #e2e8f0;
+}
+
+/* --- RODAPÉ --- */
+footer {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    font-weight: 600;
+}
+
+/* RESPONSIVIDADE EXTREMA */
+@media (max-width: 768px) {
+    header h1 { font-size: 2.3rem; }
+    nav { flex-direction: column; align-items: center; }
+    nav a { padding: 12px; width: 100%; text-align: center; }
+    section { padding: 20px; }
+}
