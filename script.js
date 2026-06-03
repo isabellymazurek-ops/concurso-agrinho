@@ -1,39 +1,76 @@
-const canvas = document.getElementById("bg");
-const ctx = canvas.getContext("2d");
+// DOCUMENTO DE INTERATIVIDADE - PROJETO AGRINHO
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+document.addEventListener("DOMContentLoaded", function() {
+    
+    // --- LÓGICA DO JOGO (QUIZ) ---
+    const btnOpcao1 = document.getElementById('btn-opcao1');
+    const btnOpcao2 = document.getElementById('btn-opcao2');
+    const resultadoQuiz = document.getElementById('resultado-quiz');
 
-let particles = [];
+    if(btnOpcao1 && btnOpcao2) {
+        btnOpcao1.addEventListener('click', () => verificarResposta(true));
+        btnOpcao2.addEventListener('click', () => verificarResposta(false));
+    }
 
-for(let i = 0; i < 120; i++){
-  particles.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    r: Math.random() * 2,
-    dx: (Math.random() - 0.5),
-    dy: (Math.random() - 0.5)
-  });
-}
+    function verificarResposta(respostaCorreta) {
+        if (respostaCorreta) {
+            resultadoQuiz.style.color = "green";
+            resultadoQuiz.innerText = "🎉 Correto! Os Drones revolucionaram a checagem de pragas e falhas no campo!";
+        } else {
+            resultadoQuiz.style.color = "red";
+            resultadoQuiz.innerText = "❌ Tente novamente! Essa ferramenta não voa para mapear.";
+        }
+    }
 
-function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
+    // --- LÓGICA DO CHATBOT DE IA (Banco de Dados Temático) ---
+    const bancoCuriosidades = {
+        inovacao: "Sabia que hoje existem tratores autônomos guiados por GPS e IA que trabalham sozinhos sem errar um único centímetro de terra?",
+        esporte: "Atletas de alta performance utilizam a tecnologia do campo para rastrear a origem orgânica dos alimentos, garantindo energia limpa e livre de resíduos nocivos.",
+        nutricao: "A cor do alimento diz muito! Alimentos roxos do agro (como o açaí e a amora) são cheios de antocianinas, excelentes para o cérebro, foco e a memória.",
+        desenho: "Os primeiros desenhos animados focados no campo ajudavam os pioneiros da agricultura a entender as previsões do tempo no século passado de forma lúdica!",
+        animacoes: "Grandes estúdios de animação utilizam simuladores de física baseados em biomas reais para recriar florestas e plantações idênticas às reais nos cinemas.",
+        natureza: "Uma única árvore de grande porte na fazenda pode bombear até 400 litros de água por dia para a atmosfera através da evapotranspiração!",
+        jogos: "Os jogos de fazenda virtuais ajudam cientistas reais a testar cenários de mudanças climáticas antes de plantar as sementes de verdade no solo!"
+    };
 
-  ctx.fillStyle = "#00ffe5";
+    const btnEnviar = document.getElementById('btn-enviar');
+    const userInput = document.getElementById('userInput');
+    const chatContent = document.getElementById('chatContent');
 
-  particles.forEach(p => {
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-    ctx.fill();
+    if (btnEnviar && userInput) {
+        btnEnviar.addEventListener('click', enviarMensagem);
+        userInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                enviarMensagem();
+            }
+        });
+    }
 
-    p.x += p.dx;
-    p.y += p.dy;
+    function enviarMensagem() {
+        const textoUsuario = userInput.value.trim().toLowerCase();
 
-    if(p.x < 0 || p.x > canvas.width) p.dx *= -1;
-    if(p.y < 0 || p.y > canvas.height) p.dy *= -1;
-  });
+        if (textoUsuario === "") return;
 
-  requestAnimationFrame(animate);
-}
+        // Adiciona a mensagem do usuário na tela
+        chatContent.innerHTML += `<div class="msg user">${userInput.value}</div>`;
+        
+        // Mensagem padrão caso não encontre palavra-chave
+        let respostaBot = "Hum, não entendi bem. Tente digitar termos como: 'inovação', 'esporte', 'nutrição', 'desenhos', 'natureza' ou 'jogos'!";
+        
+        // Varre o banco de curiosidades procurando termos equivalentes
+        for (let chave in bancoCuriosidades) {
+            if (textoUsuario.includes(chave) || textoUsuario.includes(chave.replace('cao', 'ção'))) {
+                respostaBot = bancoCuriosidades[chave];
+                break;
+            }
+        }
 
-animate();
+        // Simulação de resposta com delay de "processamento" da IA
+        setTimeout(() => {
+            chatContent.innerHTML += `<div class="msg bot">🤖 <strong>IA Agrinho:</strong> ${respostaBot}</div>`;
+            chatContent.scrollTop = chatContent.scrollHeight; // Mantém o chat rolando para o final
+        }, 500);
+
+        userInput.value = "";
+    }
+});
