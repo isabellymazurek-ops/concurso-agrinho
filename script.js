@@ -1,36 +1,41 @@
-// DOCUMENTO DE INTERATIVIDADE - PROJETO AGRINHO
+// DOCUMENTO DE INTERATIVIDADE E LÓGICA - PROJETO AGRINHO
 
 document.addEventListener("DOMContentLoaded", function() {
     
-    // --- LÓGICA DO JOGO (QUIZ) ---
+    // ==========================================
+    // 1. LÓGICA DO JOGO (QUIZ DO AGRO)
+    // ==========================================
     const btnOpcao1 = document.getElementById('btn-opcao1');
     const btnOpcao2 = document.getElementById('btn-opcao2');
     const resultadoQuiz = document.getElementById('resultado-quiz');
 
-    if(btnOpcao1 && btnOpcao2) {
+    if (btnOpcao1 && btnOpcao2) {
         btnOpcao1.addEventListener('click', () => verificarResposta(true));
         btnOpcao2.addEventListener('click', () => verificarResposta(false));
     }
 
     function verificarResposta(respostaCorreta) {
         if (respostaCorreta) {
-            resultadoQuiz.style.color = "green";
-            resultadoQuiz.innerText = "🎉 Correto! Os Drones revolucionaram a checagem de pragas e falhas no campo!";
+            resultadoQuiz.style.color = "#2e7d32"; // Verde sucesso
+            resultadoQuiz.innerHTML = "🎉 <strong>Correto!</strong> Os Drones e satélites revolucionaram o mapeamento de pragas e a saúde do solo em tempo real!";
         } else {
-            resultadoQuiz.style.color = "red";
-            resultadoQuiz.innerText = "❌ Tente novamente! Essa ferramenta não voa para mapear.";
+            resultadoQuiz.style.color = "#d32f2f"; // Vermelho erro
+            resultadoQuiz.innerHTML = "❌ <strong>Tente novamente!</strong> Os tratores antigos não conseguem sobrevoar a área para mapeamento preciso.";
         }
     }
 
-    // --- LÓGICA DO CHATBOT DE IA (Banco de Dados Temático) ---
+    // ==========================================
+    // 2. LÓGICA DA INTELIGÊNCIA ARTIFICIAL (CHATBOT)
+    // ==========================================
+    // Banco de dados de conhecimento otimizado com os temas do concurso
     const bancoCuriosidades = {
-        inovacao: "Sabia que hoje existem tratores autônomos guiados por GPS e IA que trabalham sozinhos sem errar um único centímetro de terra?",
-        esporte: "Atletas de alta performance utilizam a tecnologia do campo para rastrear a origem orgânica dos alimentos, garantindo energia limpa e livre de resíduos nocivos.",
-        nutricao: "A cor do alimento diz muito! Alimentos roxos do agro (como o açaí e a amora) são cheios de antocianinas, excelentes para o cérebro, foco e a memória.",
-        desenho: "Os primeiros desenhos animados focados no campo ajudavam os pioneiros da agricultura a entender as previsões do tempo no século passado de forma lúdica!",
-        animacoes: "Grandes estúdios de animação utilizam simuladores de física baseados em biomas reais para recriar florestas e plantações idênticas às reais nos cinemas.",
-        natureza: "Uma única árvore de grande porte na fazenda pode bombear até 400 litros de água por dia para a atmosfera através da evapotranspiração!",
-        jogos: "Os jogos de fazenda virtuais ajudam cientistas reais a testar cenários de mudanças climáticas antes de plantar as sementes de verdade no solo!"
+        inovacao: "Sabia que hoje existem tratores autônomos guiados por GPS e IA que trabalham sozinhos, calculando a quantidade exata de sementes sem desperdício?",
+        esporte: "Atletas de alta performance utilizam alimentos rastreados por QR Code vindos do agro sustentável, garantindo energia de alta qualidade e livre de resíduos nocivos.",
+        nutricao: "A cor do alimento diz muito! Alimentos roxos e vermelhos do agro (como açaí, amora e tomate) combatem o envelhecimento celular e melhoram o foco nos estudos.",
+        desenho: "Os primeiros desenhos e gibis educativos no campo ajudavam crianças e famílias inteiras a entender os ciclos da chuva e a importância de proteger as nascentes.",
+        animacoes: "Grandes estúdios de cinema utilizam simuladores de física realistas baseados em biomas e plantações de verdade para renderizar florestas perfeitas em animações 3D.",
+        natureza: "Preservar vale a pena! Uma única árvore de grande porte na fazenda pode bombear até 400 litros de água por dia para a atmosfera através da evapotranspiração.",
+        jogos: "Os jogos de fazenda virtuais não são só diversão: cientistas reais utilizam simuladores parecidos para testar cenários de mudanças climáticas antes do plantio real."
     };
 
     const btnEnviar = document.getElementById('btn-enviar');
@@ -51,26 +56,28 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (textoUsuario === "") return;
 
-        // Adiciona a mensagem do usuário na tela
+        // 1. Renderiza a mensagem digitada pelo usuário na tela
         chatContent.innerHTML += `<div class="msg user">${userInput.value}</div>`;
         
-        // Mensagem padrão caso não encontre palavra-chave
-        let respostaBot = "Hum, não entendi bem. Tente digitar termos como: 'inovação', 'esporte', 'nutrição', 'desenhos', 'natureza' ou 'jogos'!";
+        // Mensagem padrão caso nenhuma palavra-chave seja encontrada
+        let respostaBot = "Hum, não encontrei essa palavra no meu sistema. Tente digitar termos como: <strong>Inovação, Esporte, Nutrição, Desenho, Animação, Natureza ou Jogos</strong>!";
         
-        // Varre o banco de curiosidades procurando termos equivalentes
+        // 2. Varre o banco de dados procurando correspondências (trata também acentuações básicas)
         for (let chave in bancoCuriosidades) {
-            if (textoUsuario.includes(chave) || textoUsuario.includes(chave.replace('cao', 'ção'))) {
+            let chaveTratada = chave.replace('cao', 'ção').replace('acoes', 'ações');
+            if (textoUsuario.includes(chave) || textoUsuario.includes(chaveTratada)) {
                 respostaBot = bancoCuriosidades[chave];
                 break;
             }
         }
 
-        // Simulação de resposta com delay de "processamento" da IA
+        // 3. Simula o tempo de resposta da "IA" com um pequeno delay (500ms)
         setTimeout(() => {
             chatContent.innerHTML += `<div class="msg bot">🤖 <strong>IA Agrinho:</strong> ${respostaBot}</div>`;
-            chatContent.scrollTop = chatContent.scrollHeight; // Mantém o chat rolando para o final
+            chatContent.scrollTop = chatContent.scrollHeight; // Rola a tela automaticamente para baixo
         }, 500);
 
+        // Limpa o campo de digitação
         userInput.value = "";
     }
 });
