@@ -1,57 +1,167 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Neo Eco Game World</title>
-
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroForte Sustentável - O Futuro da Terra</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
 
-<canvas id="bg"></canvas>
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="badge">Concurso Agrinho 2026</span>
+            <h1>Agro Forte, Natureza Viva</h1>
+            <p>Descubra como a tecnologia de ponta e a sustentabilidade transformam o campo na maior força econômica e ecológica do nosso planeta.</p>
+            <a href="#ia" class="btn-primary">Fale com a IA do Agro</a>
+        </div>
+    </header>
 
-<div class="world">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo"><i class="fa-solid fa-seedling"></i> AgroForte</a>
+            <div class="nav-links">
+                <a href="#pilares"><i class="fa-solid fa-leaf"></i> Pilares</a>
+                <a href="#ciencia"><i class="fa-solid fa-microscope"></i> Ciência</a>
+                <a href="#videos"><i class="fa-solid fa-play"></i> Vídeos</a>
+                <a href="#quiz"><i class="fa-solid fa-gamepad"></i> Quiz Interativo</a>
+                <a href="#ia"><i class="fa-solid fa-robot"></i> IA Agrinho</a>
+            </div>
+        </div>
+    </nav>
 
-  <div class="hud">⚡ ENERGY: 98% | 🏃 MISSÕES: 3 | 🌱 ECO LEVEL MAX</div>
+    <div class="main-container">
 
-  <div class="city"></div>
-  <div class="track"></div>
+        <section id="pilares" class="section-card">
+            <div class="section-header">
+                <h2>Os Pilares do Agro Sustentável</h2>
+                <p>A união perfeita entre produtividade, saúde e respeito ao meio ambiente.</p>
+            </div>
+            <div class="grid-pilares">
+                <div class="pilar-card animate-hover">
+                    <i class="fa-solid fa-apple-whole icon-pilar"></i>
+                    <h3>Nutrição & Esporte</h3>
+                    <p>Alimentos biofortificados geram mais energia e saúde para atletas e famílias, conectando o campo diretamente ao bem-estar do corpo.</p>
+                </div>
+                <div class="pilar-card animate-hover">
+                    <i class="fa-solid fa-tree icon-pilar"></i>
+                    <h3>Natureza Preservada</h3>
+                    <p>O plantio direto e a integração Lavoura-Pecuária-Floresta (ILPF) provam que o Agro Forte protege a biodiversidade e recupera o solo.</p>
+                </div>
+                <div class="pilar-card animate-hover">
+                    <i class="fa-solid fa-wand-magic-sparkles icon-pilar"></i>
+                    <h3>Animação & Arte</h3>
+                    <p>A cultura do campo expressa em desenhos e jogos que ensinam as novas gerações a valorizar a jornada de cada semente.</p>
+                </div>
+            </div>
+        </section>
 
-  <!-- árvores -->
-  <div class="tree" style="left:10%"></div>
-  <div class="tree" style="left:30%"></div>
-  <div class="tree" style="left:70%"></div>
+        <section id="ciencia" class="section-card bg-light">
+            <div class="section-header">
+                <h2>Ciência em Ação: O Campo Tecnológico</h2>
+                <p>Evidências científicas de inovações que já estão mudando o mundo.</p>
+            </div>
+            <div class="artigo-container">
+                <article class="artigo-vitrine">
+                    <div class="artigo-meta">
+                        <span class="tag-ciencia"><i class="fa-solid fa-circle-check"></i> Embrapa 2025</span>
+                    </div>
+                    <h3>Fixação Biológica de Nitrogênio (FBN)</h3>
+                    <p>"Através do uso de bactérias naturais benéficas, o agro brasileiro reduziu drasticamente a dependência de fertilizantes químicos sintéticos, economizando bilhões de dólares e evitando a emissão de milhões de toneladas de gases estufa."</p>
+                </article>
 
-  <!-- jogadores -->
-  <div class="player" style="left:20%; bottom:140px;">🏃</div>
-  <div class="player" style="left:50%; bottom:140px;">🚴</div>
-  <div class="player" style="left:75%; bottom:140px;">🧗</div>
+                <article class="artigo-vitrine">
+                    <div class="artigo-meta">
+                        <span class="tag-ciencia"><i class="fa-solid fa-circle-check"></i> AgroScience Review</span>
+                    </div>
+                    <h3>Inteligência Artificial e Drones de Pulverização</h3>
+                    <p>"A aplicação direcionada de insumos por meio de drones com sensores multiespectrais reduziu o desperdício de água e defensivos agrícolas em até 85% nas lavouras monitoradas por IA."</p>
+                </article>
+            </div>
+        </section>
 
-  <!-- comida power-up -->
-  <div class="food" style="top:30%; left:20%;">🍎</div>
-  <div class="food" style="top:20%; right:25%;">🥑</div>
-  <div class="food" style="top:35%; right:10%;">🍊</div>
+        <section id="videos" class="section-card">
+            <div class="section-header">
+                <h2>O Agro na Tela</h2>
+                <p>Assista a explicações dinâmicas e animações fantásticas sobre a tecnologia no campo.</p>
+            </div>
+            <div class="video-grid">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/gI8X7iF7Hsk" title="Embrapa - Tecnologia e Sustentabilidade" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="video-info">
+                        <h4>Tecnologia Poupa Terra</h4>
+                        <p>Como a ciência ajuda a produzir mais alimentos usando menos espaço físico.</p>
+                    </div>
+                </div>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/FvNfV0xXidk" title="Agricultura de Precisão Animada" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="video-info">
+                        <h4>A Revolução Digital no Campo</h4>
+                        <p>Uma animação didática mostrando o papel dos satélites e robôs na fazenda moderna.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <!-- drones -->
-  <div class="drone" style="top:15%; left:10%"></div>
-  <div class="drone" style="top:25%; right:10%"></div>
+        <section id="quiz" class="section-card quiz-section">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-troféu"></i> Quiz Agro Desafio!</h2>
+                <p>Teste seus conhecimentos e prove que você entende de sustentabilidade.</p>
+            </div>
+            <div class="quiz-box">
+                <div id="quiz-container">
+                    <div class="quiz-progresso"><span id="pergunta-atual">1</span> de <span id="total-perguntas">3</span></div>
+                    <h3 id="quiz-pergunta">Carregando pergunta...</h3>
+                    <div id="quiz-opcoes" class="opcoes-container">
+                        </div>
+                </div>
+                <div id="quiz-resultado" class="hidden">
+                    <i class="fa-solid fa-award medalha-icon"></i>
+                    <h3>Fim do Jogo!</h3>
+                    <p id="quiz-pontuacao"></p>
+                    <button class="btn-primary" onclick="reiniciarQuiz()">Jogar Novamente</button>
+                </div>
+            </div>
+        </section>
 
-  <!-- robôs -->
-  <div class="robot" style="bottom:220px; left:15%"></div>
-  <div class="robot" style="bottom:260px; right:20%"></div>
+        <section id="ia" class="section-card">
+            <div class="section-header">
+                <h2>Converse com o Agrinho IA</h2>
+                <p>Nossa inteligência artificial sabe tudo sobre Esporte, Nutrição, Jogos, Natureza e Sustentabilidade. Faça o teste!</p>
+            </div>
+            <div class="chat-wrapper">
+                <div class="chat-header">
+                    <div class="avatar"><i class="fa-solid fa-robot"></i></div>
+                    <div>
+                        <h4>Assistente InovaAgro</h4>
+                        <span class="status-online">Online</span>
+                    </div>
+                </div>
+                <div class="chat-messages" id="chatContent">
+                    <div class="msg-bubble bot">
+                        Olá! Sou o assistente de IA do Agrinho. Pergunte-me sobre <strong>Inovação, Natureza, Esporte, Nutrição, Desenhos ou Jogos</strong> e eu te revelarei uma curiosidade incrível!
+                    </div>
+                </div>
+                <div class="chat-input-container">
+                    <input type="text" id="userInput" placeholder="Ex: Me conta uma curiosidade sobre nutrição e esporte?">
+                    <button id="btn-enviar"><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </section>
 
-  <!-- hologramas -->
-  <div class="holo" style="top:15%; left:40%"></div>
-  <div class="holo" style="top:40%; right:15%"></div>
+    </div>
 
-  <!-- núcleo de energia -->
-  <div class="orb"></div>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Projeto AgroForte Sustentável. Desenvolvido para o Concurso Agrinho.</p>
+            <div class="footer-tags">
+                <span>#AgroForte</span><span>#Sustentabilidade</span><span>#Tecnologia</span><span>#Agrinho2026</span>
+            </div>
+        </div>
+    </footer>
 
-</div>
-
-<script src="script.js"></script>
-
+    <script src="script.js"></script>
 </body>
 </html>
