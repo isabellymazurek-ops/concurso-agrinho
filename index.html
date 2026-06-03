@@ -3,96 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conexão AgroSustentável | Projeto Agrinho</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Conexão Futuro: A Revolução Invisível do Agro</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-    <header class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
+    <header>
+        <div class="header-overlay">
             <span class="badge">Projeto Agrinho 2026</span>
-            <h1>O Futuro Conectado da Terra</h1>
-            <p>Descubra como a tecnologia, a ciência da nutrição e o respeito à natureza estão revolucionando o campo.</p>
-            <a href="#ia" class="btn-main">Fale com a nossa IA</a>
+            <h1>E se o futuro do planeta dependesse de um chip de computador enterrado na lama?</h1>
+            <p>Descubra como a tecnologia mais avançada do mundo está se aliando à natureza para salvar o amanhã. Esporte, nutrição, ciência e games se encontram aqui.</p>
+            <a href="#ia" class="cta-btn">Falar com a IA Agrinho</a>
         </div>
     </header>
 
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#sustentabilidade">Sustentabilidade</a>
-            <a href="#artigos">Ciência</a>
-            <a href="#multimidia">Animações & Vídeos</a>
-            <a href="#saude">Nutrição & Esporte</a>
-            <a href="#jogos">Quiz Interativo</a>
-            <a href="#ia">Chatbot IA</a>
-        </div>
+    <nav>
+        <a href="#sustentabilidade"><i class="fas fa-leaf"></i> Natureza</a>
+        <a href="#artigos"><i class="fas fa-microscope"></i> Ciência</a>
+        <a href="#multimidia"><i class="fas fa-play-circle"></i> Animações</a>
+        <a href="#saude"><i class="fas fa-apple-alt"></i> Nutrição & Esporte</a>
+        <a href="#jogos"><i class="fas fa-gamepad"></i> Desafio Quiz</a>
+        <a href="#ia" class="nav-ia"><i class="fas fa-robot"></i> Chatbot IA</a>
     </nav>
 
-    <main class="main-container">
+    <div class="container">
 
-        <section id="sustentabilidade" class="card-section">
+        <section id="sustentabilidade">
             <div class="section-header">
-                <h2>Natureza & Sustentabilidade</h2>
-                <p>O equilíbrio perfeito entre a preservação ambiental e a produção inteligente de alimentos.</p>
-            </div>
-            <div class="grid-dinamico">
-                <div class="card-interativo">
-                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1625246333195-78d9c38ad451?auto=format&fit=crop&w=600&q=80');"></div>
-                    <div class="card-body">
-                        <h3>Agricultura de Precisão</h3>
-                        <p>Uso de satélites e sensores inteligentes para aplicar água e nutrientes apenas onde a planta realmente precisa, evitando desperdícios no solo.</p>
-                    </div>
-                </div>
-                <div class="card-interativo">
-                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=600&q=80');"></div>
-                    <div class="card-body">
-                        <h3>Manejo Regenerativo</h3>
-                        <p>Práticas como o plantio direto mantêm os restos vegetais da colheita passada protegendo a terra, reduzindo a temperatura do solo e capturando carbono da atmosfera.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="artigos" class="card-section bg-light">
-            <div class="section-header">
-                <h2>Ciência e Inovação</h2>
-                <p>Evidências e dados concretos retirados de pesquisas de grandes instituições brasileiras.</p>
+                <h2>🌱 Sustentabilidade Invisível</h2>
+                <p class="subtitle">Como a tecnologia protege a natureza sem que você perceba.</p>
             </div>
             
-            <div class="artigo-cientifico">
-                <div class="artigo-meta">Embrapa Instrumentação • Artigo Técnico</div>
-                <h3>Sensores IoT na Irrigação de Precisão</h3>
-                <p>"A aplicação de sistemas de automação baseados em Internet das Coisas (IoT) reduziu o uso de água em até 40% nas culturas irrigadas por pivô central, otimizando os lençóis freáticos sem perda de produtividade vegetal."</p>
-                <span class="fonte-link"><strong>Fonte Oficial:</strong> Empresa Brasileira de Pesquisa Agropecuária (Embrapa, 2024).</span>
-            </div>
-
-            <div class="artigo-cientifico">
-                <div class="artigo-meta">Revista Brasileira de Ciência do Solo • Estudo Clínico</div>
-                <h3>Bioinsumos e a Microbiologia do Solo</h3>
-                <p>"A substituição de fertilizantes sintéticos tradicionais por inoculantes biológicos à base de bactérias fixadoras de nitrogênio (como o <em>Azospirillum</em>) aumentou a resiliência das raízes contra estiagens prolongadas."</p>
-                <span class="fonte-link"><strong>Fonte Oficial:</strong> Portal de Periódicos CAPES / SBCS (2025).</span>
-            </div>
-        </section>
-
-        <section id="multimidia" class="card-section">
-            <div class="section-header">
-                <h2>Multimídia: Animações e Tecnologias</h2>
-                <p>Assista aos recursos e animações didáticas produzidas para ilustrar a rotina moderna das fazendas tecnológicas.</p>
-            </div>
-            <div class="video-grid">
-                <div class="video-box">
-                    <video controls poster="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=600&q=80">
-                        <source src="video-projeto.mp4" type="video/mp4">
-                    </video>
-                    <h4>Animação Didática: O Ciclo da Semente Tecnológica</h4>
-                    <p>Curta-metragem animado explicando como a biotecnologia protege as sementes contra pragas naturais.</p>
+            <p>A agricultura moderna não destrói o meio ambiente; ela se tornou a maior guardiã dele. Através de inteligência de dados, o agro hoje consegue monitorar árvores individuais, prever focos de incêndio e usar insetos do bem para combater pragas, eliminando químicos pesados.</p>
+            
+            <div class="media-grid">
+                <div class="media-card">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1563514223300-b3b0d23a6207?auto=format&fit=crop&w=600&q=80" alt="Drones agrícolas">
+                    </div>
+                    <div class="card-content">
+                        <h3>Drones Polinizadores e Visão Computacional</h3>
+                        <p>Robôs voadores que conseguem identificar quais flores precisam de atenção e mapear áreas de preservação permanente com precisão milimétrica.</p>
+                    </div>
+                </div>
+                <div class="media-card">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?auto=format&fit=crop&w=600&q=80" alt="Floresta protegida">
+                    </div>
+                    <div class="card-content">
+                        <h3>O Fenômeno dos Créditos de Carbono</h3>
+                        <p>Fazendas conectadas estão deixando de emitir gases e limpando o ar do planeta, transformando florestas em ativos financeiros.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="saude" class="card-section destaque-saude">
-            <div class="saude-content">
-                <h2>Nutrição, Esporte & Energia Verde</h2>
-                <p>Você sabia que a alta
+        <section id="artigos" class="dark-section">
+            <div class="section-header">
+                <h2>🔬 O que a Ciência de Ponta Diz?</h2>
+                <p class="subtitle">Trechos intrigantes de artigos científicos recentes.</p>
+            </div>
+
+            <div class="artigos-container">
+                <div class="artigo-card">
+                    <div class="artigo-meta">
+                        <span class="tag">Artigo Publicado • 2025</span>
+                        <span class="doi">DOI: 10.1016/j.agrotech</span>
+                    </div>
+                    <h3>Inteligência das Coisas (IoT) e a Mente do Solo</h3>
+                    <p class="quote">"Ao instalarmos redes mesh de sensores em plantações de rotação de culturas, os dados provaram que o solo 'comunica' seus níveis de estresse hídrico muito antes das folhas murcharem. Isso gerou uma economia cirúrgica de 42% na água das bacias hidrográficas locais."</p>
+                    <span class="autor">— Revista Brasileira de Engenharia Agrícola</span>
+                </div>
+
+                <div class="artigo-card">
+                    <div class="artigo-meta">
+                        <span class="tag">Estudo Clínico • 2026</span>
+                        <span class="doi">DOI: 10.1038/s41433</span>
+                    </div>
+                    <h3>Edição Genética CRISPR e a Pegada Ecológica</h3>
+                    <p class="quote">"A reengenharia biológica de sementes via CRISPR permitiu que plantas de milho absorvessem nitrogênio diretamente do ar através de bactérias simbióticas. O resultado foi a redução drástica de fertilizantes sintéticos industriais no lençol freático."</p>
+                    <span class="autor">— Instituto Internacional de Biotecnologia</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="multimidia">
+            <div class="section-header">
+                <h2>🎬 Cinema e Animações no Campo</h2>
+                <p class="subtitle">Como a computação gráfica traduz a vida agro.</p>
+            </div>
+            
+            <div class="video-layout">
+                <div class="video-main">
+                    <div class="video-wrapper">
+                        <video controls poster="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=800&q=80">
+                            <source src="sua-animacao.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="video-info">
+                        <h3>Animação: "O Segredo da Semente Inteligente"</h3>
+                        <p>Uma animação lúdica criada para mostrar como um minúsculo grão conversa com microrganismos do solo para crescer forte sem veneno.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="saude" class="split-section">
+            <div class="split-text">
+                <h2>🏃‍♂️ Biohacking: Combustível de Atleta vem da Terra</h2>
+                <p class="subtitle">A conexão direta entre a alta performance esportiva e o agro sustentável.</p>
+                <p>Por que os maiores atletas do mundo estão exigindo alimentos com rastreabilidade total? Porque um morango ou um grão de aveia cultivado com técnicas de agroecologia possui até <strong>30% mais antioxidantes</strong> do que alimentos comuns.</p>
+                
+                <div class="curiosidade-box">
+                    <h4>💡 Você sabia?</h4>
+                    <p>O cansaço muscular diminui mais rápido se a sua nutrição vier de alimentos sazonais (colhidos na época certa). O agro sustentável respeita o tempo da natureza para entregar mais energia ao seu corpo!</p>
+                </div>
+            </div>
+            <div class="split-img">
+                <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80" alt="Esporte e Nutrição">
+            </div>
+        </section>
+
+        <section id="jogos" class="quiz-section">
+            <div class="section-header">
+                <h2>🎮 Desafio Interativo: Hackeando o Agro</h2>
+                <p class="subtitle">Você sobreviveria gerenciando uma fazenda tecnológica?</p>
+            </div>
+            
+            <div class="game-box">
+                <div class="quiz-card">
+                    <div class="quiz-progress">Pergunta 1 de 1</div>
+                    <h3 id="pergunta">Sua plantação está prestes a ser atacada por uma nuvem de lagartas. Qual sua decisão tecnológica mais sustentável?</h3>
+                    
+                    <div class="quiz-options">
+                        <button class="quiz-btn" id="btn-opcao1"><i class="fas fa-bug"></i> Liberar vespas inimigas naturais (Controle Biológico)</button>
+                        <button class="quiz-btn" id="btn-opcao2"><i class="fas fa-spray-can"></i> Aplicar defensivos químicos pesados de avião</button>
+                    </div>
+                    <p id="resultado-quiz"></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="ia" class="ia-section">
+            <div class="section-header">
+                <h2>🤖 Oráculo Agrinho: A IA do Amanhã</h2>
+                <p class="subtitle">Teste os limites da nossa inteligência artificial integrada.</p>
+            </div>
+            
+            <div class="chat-wrapper">
+                <div class="chat-info">
+                    <h3>O que você quer descobrir?</h3>
+                    <p>Nossa inteligência artificial foi treinada para revelar segredos ocultos. Digite comandos como:</p>
+                    <ul>
+                        <li><i class="fas fa-bolt"></i> <strong>Inovação</strong> (Robôs e Tratores autônomos)</li>
+                        <li><i class="fas fa-apple-alt"></i> <strong>Nutrição</strong> (Superalimentos)</li>
+                        <li><i class="fas fa-dumbbell"></i> <strong>Esporte</strong> (Performance biológica)</li>
+                        <li><i class="fas fa-paint-brush"></i> <strong>Desenho/Animações</strong> (A arte no agro)</li>
+                        <li><i class="fas fa-tree"></i> <strong>Natureza</strong> (Milagres da ecologia)</li>
+                        <li><i class="fas fa-dice"></i> <strong>Jogos</strong> (Criação de simuladores)</li>
+                    </ul>
+                </div>
+                
+                <div class="chat-box">
+                    <div class="chat-content" id="chatContent">
+                        <div class="msg bot">✨ Olá, mente curiosa! Sou a IA Agrinho. O que você quer decifrar sobre o futuro sustentável hoje? Digite uma das palavras ao lado.</div>
+                    </div>
+                    <div class="chat-input-area">
+                        <input type="text" id="userInput" placeholder="Escreva 'inovação', 'natureza', 'esporte'...">
+                        <button id="btn-enviar"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
