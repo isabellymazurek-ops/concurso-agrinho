@@ -1,78 +1,91 @@
-// DOCUMENTO DE INTERATIVIDADE INTERATIVA - PROJETO AGRINHO 🚀
+// AGRO_ENGINE v2.0 - SCRIPTS DO CONCURSO AGRINHO
 
 document.addEventListener("DOMContentLoaded", function() {
     
     // ==========================================
-    // 1. JOGO DO QUIZ AVANÇADO (SISTEMA DE PONTUAÇÃO E FASES)
+    // 1. SISTEMA COMPLETO DE QUIZZIZ (MÚLTIPLAS PERGUNTAS)
     // ==========================================
     const perguntas = [
         {
-            pergunta: "Qual tecnologia usa robôs voadores para monitorar plantações?",
-            opcoes: ["Drones de Precisão", "Tratores Antigos"],
-            correta: 0,
-            feedback: "🎉 Sensacional! Os Drones economizam tempo e insumos encontrando pragas lá do alto!"
+            pergunta: "Qual tecnologia usa robôs voadores para monitorar a lavoura sem amassar as plantas?",
+            opcoes: ["Tratores com esteira de ferro", "Drones de Alta Precisão", "Sensores subterrâneos"],
+            correta: 1,
+            feedback: "⚡ Excelente! Os Drones escaneiam e criam mapas de calor indicando a saúde exata da lavoura."
         },
         {
-            pergunta: "Qual dessas ações protege as nascentes de água na fazenda?",
-            opcoes: ["Cercar e plantar árvores nativas (Mata Ciliar)", "Desviar o rio para a plantação"],
+            pergunta: "Para economizar até 40% de água, o agro sustentável monitora o solo com:",
+            opcoes: ["Placas de captação de neblina", "Previsão do tempo de rádio", "Sensores de umidade IoT conectados"],
+            correta: 2,
+            feedback: "⚡ Alvo atingido! Sensores de Internet das Coisas (IoT) calculam milimetricamente se o solo precisa de água."
+        },
+        {
+            pergunta: "Qual a melhor estratégia para proteger os rios e nascentes em uma fazenda?",
+            opcoes: ["Cercar e reflorestar com Mata Ciliar nativa", "Canalizar o rio para debaixo da terra", "Cobrir o leito do rio com lonas plásticas"],
             correta: 0,
-            feedback: "🌊 Perfeito! A mata ciliar protege a água como os cílios protegem nossos olhos!"
+            feedback: "⚡ Perfeito! As raízes das matas nativas filtram a água e seguram a terra, evitando o assoreamento."
         }
     ];
 
     let faseAtual = 0;
-    const perguntaTexto = document.getElementById('pergunta');
-    const btnOpcao1 = document.getElementById('btn-opcao1');
-    const btnOpcao2 = document.getElementById('btn-opcao2');
-    const resultadoQuiz = document.getElementById('resultado-quiz');
+    let acertos = 0;
 
-    function carregarFase() {
+    const elemPergunta = document.getElementById('pergunta');
+    const elemProgresso = document.getElementById('quiz-progress');
+    const elemResultado = document.getElementById('resultado-quiz');
+
+    function renderizarQuiz() {
         if (faseAtual < perguntas.length) {
-            perguntaTexto.innerHTML = `<strong>Pergunta ${faseAtual + 1}:</strong> ${perguntas[faseAtual].pergunta}`;
-            btnOpcao1.innerText = perguntas[faseAtual].opcoes[0];
-            btnOpcao2.innerText = perguntas[faseAtual].opcoes[1];
+            // Atualiza barra de progresso gráfica
+            const porcentagem = (faseAtual / perguntas.length) * 100;
+            elemProgresso.style.width = `${porcentagem}%`;
+            elemResultado.innerHTML = "";
+
+            // Atualiza texto da pergunta
+            elemPergunta.innerHTML = `[STAGE 0${faseAtual + 1}] &raquo; ${perguntas[faseAtual].pergunta}`;
+            
+            // Renderiza opções dinamicamente nos botões
+            perguntas[faseAtual].opcoes.forEach((textoOpcao, index) => {
+                const btn = document.getElementById(`opt-${index}`);
+                if (btn) {
+                    btn.innerText = textoOpcao;
+                    btn.onclick = () => checarResposta(index);
+                }
+            });
         } else {
-            // Fim do Jogo
+            // Fim do Jogo / Vitória
+            elemProgresso.style.width = "100%";
             document.getElementById('quiz-area').style.display = 'none';
-            resultadoQuiz.style.color = "#0284c7";
-            resultadoQuiz.innerHTML = "🏆 <strong>Parabéns!</strong> Você completou a Trilha Agro Conectada e provou ser um Protetor da Natureza!";
+            elemResultado.style.color = "#00ff66";
+            elemResultado.innerHTML = `🏆 <strong>SYSTEM OVERRIDE: PARABÉNS!</strong><br>Você acertou ${acertos} de ${perguntas.length} testes de campo. Seu perfil está sincronizado com a sustentabilidade do futuro!`;
         }
     }
 
-    if (btnOpcao1 && btnOpcao2) {
-        btnOpcao1.addEventListener('click', () => verificarResposta(0));
-        btnOpcao2.addEventListener('click', () => verificarResposta(1));
-        carregarFase(); // Inicializa a primeira pergunta
-    }
-
-    function verificarResposta(opcaoEscolhida) {
-        if (opcaoEscolhida === perguntas[faseAtual].correta) {
-            resultadoQuiz.style.color = "#16a34a";
-            resultadoQuiz.innerHTML = perguntas[faseAtual].feedback;
+    function checarResposta(indiceEscolhido) {
+        if (indiceEscolhido === perguntas[faseAtual].correta) {
+            acertos++;
+            elemResultado.style.color = "#00ff66";
+            elemResultado.innerHTML = perguntas[faseAtual].feedback;
             faseAtual++;
-            // Espera 3 segundos para o jogador ler o feedback e passa para o próximo desafio
-            setTimeout(() => {
-                resultadoQuiz.innerText = "";
-                carregarFase();
-            }, 3000);
+            setTimeout(renderizarQuiz, 2500); // Avança após ler a resposta
         } else {
-            resultadoQuiz.style.color = "#dc2626";
-            resultadoQuiz.innerHTML = "💥 <strong>Ops! Essa não!</strong> Pense em como a sustentabilidade e a tecnologia se unem.";
+            elemResultado.style.color = "#ff0055";
+            elemResultado.innerHTML = "❌ <strong>ACESSO NEGADO:</strong> Alternativa incorreta. Recalculando dados, tente outra vez!";
         }
     }
 
+    // Inicializa o jogo na primeira execução
+    renderizarQuiz();
+
 
     // ==========================================
-    // 2. CHATBOT INTELIGENTE COM ANIMAÇÃO DE DIGITAÇÃO
+    // 2. CHATBOT NEURAL IA AGRINHO
     // ==========================================
-    const bancoCuriosidades = {
-        inovacao: "💡 <strong>Inovação Incrível:</strong> Hoje já existem sensores enterrados no solo que enviam um 'WhatsApp' para o sistema de irrigação avisando se a planta está com sede ou não!",
-        esporte: "🏅 <strong>Energia de Atleta:</strong> Alimentos ricos em carboidratos complexos produzidos no campo, como a batata-doce e a aveia, são a maior fonte de combustível limpo para maratonistas e jogadores de futebol!",
-        nutricao: "🍏 <strong>Super Nutrição:</strong> Frutas colhidas na época certa da safra têm até 3 vezes mais vitaminas do que as colhidas fora de época. O Agro consciente respeita esse tempo!",
-        desenho: "🎨 <strong>Arte no Campo:</strong> Antigamente, gibis animados eram distribuídos nas fazendas para ensinar de forma divertida como combater a erosão do solo através de jogos!",
-        animacoes: "🎬 <strong>Mágica das Telas:</strong> Para criar as florestas do filme 'O Rei Leão' em 3D, os animadores usaram algoritmos reais de botânica que imitam o crescimento real das árvores do campo!",
-        natureza: "🌳 <strong>Poder Oculto:</strong> A floresta nativa preservada dentro de uma propriedade rural ajuda a controlar a temperatura de toda a fazenda, diminuindo as ondas de calor extremo.",
-        jogos: "🎮 <strong>Gamers no Agro:</strong> Cientistas usam simuladores estilo Minecraft e FarmVille para testar se uma nova semente vai resistir a grandes secas antes mesmo de fabricá-la."
+    const bancoDadosIA = {
+        inovacao: "📡 <strong>LOG_CURIOSIDADE:</strong> Sensores inteligentes hoje escutam o som de insetos nas plantas. A IA diferencia o barulho de pragas perigosas e avisa o fazendeiro onde tratar!",
+        esporte: "🏃 <strong>LOG_BIOENERGIA:</strong> Nutrientes orgânicos de cana-de-açúcar produzida de forma sustentável geram bio-géis de carboidrato puros usados por ciclistas olímpicos para energia imediata.",
+        nutricao: "🧬 <strong>LOG_BIOQUÍMICA:</strong> Frutas com coloração escura (antocianinas) colhidas de forma sustentável reduzem o cansaço do cérebro em até 20% se consumidas frescas de manhã.",
+        desenho: "✏️ <strong>LOG_ANIMAÇÃO:</strong> Os softwares que desenham animações de grandes jogos usam simulações botânicas reais criadas por engenheiros agrônomos para gerar plantas virtuais realistas.",
+        natureza: "🌳 <strong>LOG_CLIMA:</strong> Um hectare de floresta preservada dentro de plantações agrícolas pode sugar até 300 toneladas de gás carbônico por ano, purificando o oxigênio regional."
     };
 
     const btnEnviar = document.getElementById('btn-enviar');
@@ -80,43 +93,43 @@ document.addEventListener("DOMContentLoaded", function() {
     const chatContent = document.getElementById('chatContent');
 
     if (btnEnviar && userInput) {
-        btnEnviar.addEventListener('click', enviarMensagem);
-        userInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') enviarMensagem(); });
+        btnEnviar.addEventListener('click', processarIA);
+        userInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') processarIA(); });
     }
 
-    function enviarMensagem() {
-        const textoUsuario = userInput.value.trim().toLowerCase();
-        if (textoUsuario === "") return;
+    function processarIA() {
+        const prompt = userInput.value.trim().toLowerCase();
+        if (prompt === "") return;
 
-        // Adiciona a fala do usuário
+        // Imprime balão do usuário
         chatContent.innerHTML += `<div class="msg user">${userInput.value}</div>`;
         chatContent.scrollTop = chatContent.scrollHeight;
 
-        let respostaBot = "🤖 Hmmm, não captei essa palavra no meu chip do Agrinho. Tente enviar termos como: <strong>Inovação, Esporte, Nutrição, Desenho, Animação, Natureza ou Jogos</strong>!";
+        let resposta = "🤖 [ERRO 404]: Parâmetro não localizado na rede. Tente os comandos: <strong>Inovação, Esporte, Nutrição, Desenho ou Natureza</strong>.";
 
-        // Varredura inteligente de palavras-chave
-        for (let chave in bancoCuriosidades) {
-            let chaveTratada1 = chave.replace('cao', 'ção').replace('acoes', 'ações');
-            let chaveTratada2 = chave.replace('cao', 'cao'); // segurança de busca
-            if (textoUsuario.includes(chave) || textoUsuario.includes(chaveTratada1) || textoUsuario.includes(chaveTratada2)) {
-                respostaBot = bancoCuriosidades[chave];
+        // Escaneamento de palavras chaves
+        for (let key in bancoDadosIA) {
+            let keyTratada = key.replace('cao', 'ção');
+            if (prompt.includes(key) || prompt.includes(keyTratada)) {
+                resposta = bancoDadosIA[key];
                 break;
             }
         }
 
-        // Criando efeito de "IA pensando/digitando..."
-        const indicadorDigitando = document.createElement('div');
-        indicadorDigitando.className = 'msg bot';
-        indicadorDigitando.innerHTML = '⚡ <em>Analisando dados do campo...</em>';
+        // Prompt de digitação
+        const loader = document.createElement('div');
+        loader.className = 'msg bot';
+        loader.innerHTML = '⚙️ <em>Buscando logs no servidor central...</em>';
+        
         setTimeout(() => {
-            chatContent.appendChild(indicadorDigitando);
+            chatContent.appendChild(loader);
             chatContent.scrollTop = chatContent.scrollHeight;
-        }, 300);
+        }, 200);
 
-        // Renderiza a resposta definitiva substituindo o indicador
+        // Resposta final da IA
         setTimeout(() => {
-            indicadorDigitando.remove();
-            chatContent.innerHTML += `<div class="msg bot">🤖 ${respostaBot}</div>`;
+            loader.remove();
+            chatContent.innerHTML += `<div class="msg bot">${resposta}</div>`;
             chatContent.scrollTop = chatContent.scrollHeight;
         }, 1200);
 
