@@ -1,138 +1,102 @@
-// AGRO_ENGINE v2.0 - SCRIPTS DO CONCURSO AGRINHO
+// --- 1. WIDGET DE TEMPO REAL (Hora, Data e Estações) ---
+function updateRealTimeData() {
+    const now = new Date();
 
-document.addEventListener("DOMContentLoaded", function() {
-    
-    // ==========================================
-    // 1. SISTEMA COMPLETO DE QUIZZIZ (MÚLTIPLAS PERGUNTAS)
-    // ==========================================
-    const perguntas = [
-        {
-            pergunta: "Qual tecnologia usa robôs voadores para monitorar a lavoura sem amassar as plantas?",
-            opcoes: ["Tratores com esteira de ferro", "Drones de Alta Precisão", "Sensores subterrâneos"],
-            correta: 1,
-            feedback: "⚡ Excelente! Os Drones escaneiam e criam mapas de calor indicando a saúde exata da lavoura."
-        },
-        {
-            pergunta: "Para economizar até 40% de água, o agro sustentável monitora o solo com:",
-            opcoes: ["Placas de captação de neblina", "Previsão do tempo de rádio", "Sensores de umidade IoT conectados"],
-            correta: 2,
-            feedback: "⚡ Alvo atingido! Sensores de Internet das Coisas (IoT) calculam milimetricamente se o solo precisa de água."
-        },
-        {
-            pergunta: "Qual a melhor estratégia para proteger os rios e nascentes em uma fazenda?",
-            opcoes: ["Cercar e reflorestar com Mata Ciliar nativa", "Canalizar o rio para debaixo da terra", "Cobrir o leito do rio com lonas plásticas"],
-            correta: 0,
-            feedback: "⚡ Perfeito! As raízes das matas nativas filtram a água e seguram a terra, evitando o assoreamento."
-        }
-    ];
+    // Atualizar data e hora
+    document.getElementById('current-date').innerText = now.toLocaleDateString('pt-BR');
+    document.getElementById('current-time').innerText = now.toLocaleTimeString('pt-BR');
 
-    let faseAtual = 0;
-    let acertos = 0;
+    // Simulação dinâmica de clima baseada no horário do Paraná
+    const hour = now.getHours();
+    let temp = (hour > 6 && hour < 18) ? "26°C" : "18°C";
+    let humidity = (hour > 12) ? "55%" : "78%";
 
-    const elemPergunta = document.getElementById('pergunta');
-    const elemProgresso = document.getElementById('quiz-progress');
-    const elemResultado = document.getElementById('resultado-quiz');
+    document.getElementById('weather-temp').innerText = temp;
+    document.getElementById('weather-humidity').innerText = humidity;
+}
+setInterval(updateRealTimeData, 1000);
+updateRealTimeData();
 
-    function renderizarQuiz() {
-        if (faseAtual < perguntas.length) {
-            // Atualiza barra de progresso gráfica
-            const porcentagem = (faseAtual / perguntas.length) * 100;
-            elemProgresso.style.width = `${porcentagem}%`;
-            elemResultado.innerHTML = "";
-
-            // Atualiza texto da pergunta
-            elemPergunta.innerHTML = `[STAGE 0${faseAtual + 1}] &raquo; ${perguntas[faseAtual].pergunta}`;
-            
-            // Renderiza opções dinamicamente nos botões
-            perguntas[faseAtual].opcoes.forEach((textoOpcao, index) => {
-                const btn = document.getElementById(`opt-${index}`);
-                if (btn) {
-                    btn.innerText = textoOpcao;
-                    btn.onclick = () => checarResposta(index);
-                }
-            });
-        } else {
-            // Fim do Jogo / Vitória
-            elemProgresso.style.width = "100%";
-            document.getElementById('quiz-area').style.display = 'none';
-            elemResultado.style.color = "#00ff66";
-            elemResultado.innerHTML = `🏆 <strong>SYSTEM OVERRIDE: PARABÉNS!</strong><br>Você acertou ${acertos} de ${perguntas.length} testes de campo. Seu perfil está sincronizado com a sustentabilidade do futuro!`;
-        }
+// --- 2. JOGO / QUIZ INTERATIVO ---
+const quizData = [
+    {
+        q: "Qual o tema central do Agrinho 2026?",
+        options: ["Agro Tecnológico apenas", "Agro forte, futuro sustentável", "Produção sem limites"],
+        answer: 1
+    },
+    {
+        q: "Qual tecnologia reduz o desperdício de água monitorando o solo?",
+        options: ["Sensores IoT", "Tratores comuns", "Arados manuais"],
+        answer: 0
     }
+];
 
-    function checarResposta(indiceEscolhido) {
-        if (indiceEscolhido === perguntas[faseAtual].correta) {
-            acertos++;
-            elemResultado.style.color = "#00ff66";
-            elemResultado.innerHTML = perguntas[faseAtual].feedback;
-            faseAtual++;
-            setTimeout(renderizarQuiz, 2500); // Avança após ler a resposta
-        } else {
-            elemResultado.style.color = "#ff0055";
-            elemResultado.innerHTML = "❌ <strong>ACESSO NEGADO:</strong> Alternativa incorreta. Recalculando dados, tente outra vez!";
-        }
+let currentQuizIndex = 0;
+
+function loadQuiz() {
+    const currentQuiz = quizData[currentQuizIndex];
+    document.getElementById('quiz-question').innerText = currentQuiz.q;
+    const optionsDiv = document.getElementById('quiz-options');
+    optionsDiv.innerHTML = '';
+
+    currentQuiz.options.forEach((opt, index) => {
+        const button = document.createElement('button');
+        button.innerText = opt;
+        button.classList.add('quiz-option');
+        button.onclick = () => checkAnswer(index);
+        optionsDiv.appendChild(button);
+    });
+}
+
+function checkAnswer(selectedIndex) {
+    if(selectedIndex === quizData[currentQuizIndex].answer) {
+        alert("Correto! O equilíbrio é o caminho correto para o futuro.");
+    } else {
+        alert("Errado! Lembre-se do equilíbrio ecológico.");
     }
+    document.getElementById('next-btn').style.display = 'block';
+}
 
-    // Inicializa o jogo na primeira execução
-    renderizarQuiz();
+function nextQuestion() {
+    currentQuizIndex = (currentQuizIndex + 1) % quizData.length;
+    document.getElementById('next-btn').style.display = 'none';
+    loadQuiz();
+}
+loadQuiz();
 
+// --- 3. CHATBOT AgroIA (Mecanismo de Respostas por Contexto) ---
+const curiosidades = {
+    sustentabilidade: "Curiosidade: O sistema ILPF (Integração Lavoura-Pecuária-Floresta) permite produzir grãos, carne e madeira na mesma área, neutralizando o metano do gado!",
+    nutricao: "Curiosidade Nutricional: Legumes cultivados via agricultura de precisão retêm mais micronutrientes devido ao controle exato da fertilização orgânica.",
+    esporte: "Curiosidade: O Agro sustentável preserva trilhas naturais perfeitas para o Eco-esporte, como o Mountain Bike e Corridas de Aventura no Paraná!",
+    jogos: "Dica de Jogo: Que tal testar simuladores de fazenda sustentável onde seu objetivo é lucrar plantando sem desmatar?",
+    desenhos: "Animação: Os novos desenhos educativos usam inteligência artificial para mostrar heróis da terra protegendo polinizadores como as abelhas!"
+};
 
-    // ==========================================
-    // 2. CHATBOT NEURAL IA AGRINHO
-    // ==========================================
-    const bancoDadosIA = {
-        inovacao: "📡 <strong>LOG_CURIOSIDADE:</strong> Sensores inteligentes hoje escutam o som de insetos nas plantas. A IA diferencia o barulho de pragas perigosas e avisa o fazendeiro onde tratar!",
-        esporte: "🏃 <strong>LOG_BIOENERGIA:</strong> Nutrientes orgânicos de cana-de-açúcar produzida de forma sustentável geram bio-géis de carboidrato puros usados por ciclistas olímpicos para energia imediata.",
-        nutricao: "🧬 <strong>LOG_BIOQUÍMICA:</strong> Frutas com coloração escura (antocianinas) colhidas de forma sustentável reduzem o cansaço do cérebro em até 20% se consumidas frescas de manhã.",
-        desenho: "✏️ <strong>LOG_ANIMAÇÃO:</strong> Os softwares que desenham animações de grandes jogos usam simulações botânicas reais criadas por engenheiros agrônomos para gerar plantas virtuais realistas.",
-        natureza: "🌳 <strong>LOG_CLIMA:</strong> Um hectare de floresta preservada dentro de plantações agrícolas pode sugar até 300 toneladas de gás carbônico por ano, purificando o oxigênio regional."
-    };
+function askAI() {
+    const inputField = document.getElementById('chat-input');
+    const text = inputField.value.toLowerCase();
+    if(!text.trim()) return;
 
-    const btnEnviar = document.getElementById('btn-enviar');
-    const userInput = document.getElementById('userInput');
-    const chatContent = document.getElementById('chatContent');
+    const output = document.getElementById('chat-output');
 
-    if (btnEnviar && userInput) {
-        btnEnviar.addEventListener('click', processarIA);
-        userInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') processarIA(); });
-    }
+    // Adiciona pergunta do usuário
+    output.innerHTML += `<p class="user-msg">${inputField.value}</p>`;
 
-    function processarIA() {
-        const prompt = userInput.value.trim().toLowerCase();
-        if (prompt === "") return;
+    let reply = "Interessante! Posso te contar curiosidades específicas se você digitar palavras como: 'sustentabilidade', 'nutrição', 'esporte', 'jogos' ou 'desenhos'.";
 
-        // Imprime balão do usuário
-        chatContent.innerHTML += `<div class="msg user">${userInput.value}</div>`;
-        chatContent.scrollTop = chatContent.scrollHeight;
+    // Busca palavras-chave
+    if(text.includes("sustentabilidade") || text.includes("natureza")) reply = curiosidades.sustentabilidade;
+    else if(text.includes("nutrição") || text.includes("alimento")) reply = curiosidades.nutricao;
+    else if(text.includes("esporte") || text.includes("saude")) reply = curiosidades.esporte;
+    else if(text.includes("jogo") || text.includes("quiz")) reply = curiosidades.jogos;
+    else if(text.includes("desenho") || text.includes("animação")) reply = curiosidades.desenhos;
 
-        let resposta = "🤖 [ERRO 404]: Parâmetro não localizado na rede. Tente os comandos: <strong>Inovação, Esporte, Nutrição, Desenho ou Natureza</strong>.";
+    // Resposta do bot simulada com delay para parecer real
+    setTimeout(() => {
+        output.innerHTML += `<p class="bot-msg">${reply}</p>`;
+        output.scrollTop = output.scrollHeight; // Scroll automático para baixo
+    }, 500);
 
-        // Escaneamento de palavras chaves
-        for (let key in bancoDadosIA) {
-            let keyTratada = key.replace('cao', 'ção');
-            if (prompt.includes(key) || prompt.includes(keyTratada)) {
-                resposta = bancoDadosIA[key];
-                break;
-            }
-        }
-
-        // Prompt de digitação
-        const loader = document.createElement('div');
-        loader.className = 'msg bot';
-        loader.innerHTML = '⚙️ <em>Buscando logs no servidor central...</em>';
-        
-        setTimeout(() => {
-            chatContent.appendChild(loader);
-            chatContent.scrollTop = chatContent.scrollHeight;
-        }, 200);
-
-        // Resposta final da IA
-        setTimeout(() => {
-            loader.remove();
-            chatContent.innerHTML += `<div class="msg bot">${resposta}</div>`;
-            chatContent.scrollTop = chatContent.scrollHeight;
-        }, 1200);
-
-        userInput.value = "";
-    }
-});
+    inputField.value = '';
+}
