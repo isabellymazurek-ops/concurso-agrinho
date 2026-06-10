@@ -1,203 +1,134 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Agrinho 2026</title>
-
-<link rel="stylesheet" href="css/style.css">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InovaAgro - AgroTech Dark Edition</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-<header>
-
-<h1>🌱 Agro Forte, Futuro Sustentável</h1>
-
-<nav>
-
-<a href="#tecnologia">Tecnologia</a>
-
-<a href="#artigos">Artigos</a>
-
-<a href="#quiz">Quiz</a>
-
-<a href="#jogos">Jogos</a>
-
-<a href="#natureza">Natureza</a>
-
-<a href="#ia">IA</a>
-
-</nav>
-
-</header>
-
-<section class="hero">
-
-<video autoplay muted loop>
-
-<source src="videos/agro.mp4">
-
-</video>
-
-<div class="overlay">
-
-<h2>O Futuro do Agro é Agora</h2>
-
-<p>Inovação • Sustentabilidade • Tecnologia</p>
-
-</div>
-
-</section>
-
-<section class="dashboard">
-
-<h2>Painel Ambiental</h2>
-
-<div class="cards">
-
-<div class="card">
-🌡️
-<h3 id="temp">27°C</h3>
-</div>
-
-<div class="card">
-💧
-<h3 id="umidade">68%</h3>
-</div>
-
-<div class="card">
-🕒
-<h3 id="hora"></h3>
-</div>
-
-<div class="card">
-📅
-<h3 id="data"></h3>
-</div>
-
-</div>
-
-</section>
-
-<section id="tecnologia">
-
-<h2>🚜 Tecnologias do Agro</h2>
-
-<div class="grid">
-
-<div class="box">
-<img src="img/drone.jpg">
-<h3>Drones Agrícolas</h3>
-</div>
-
-<div class="box">
-<img src="img/agro1.jpg">
-<h3>Monitoramento Inteligente</h3>
-</div>
-
-<div class="box">
-<img src="img/agro2.jpg">
-<h3>Agricultura de Precisão</h3>
-</div>
-
-</div>
-
-</section>
-
-<section id="artigos">
-
-<h2>📚 Artigos Científicos</h2>
-
-<div class="artigo">
-
-<h3>Inteligência Artificial no Campo</h3>
-
-<p>
-Pesquisas mostram que IA aumenta a eficiência da produção,
-reduz desperdícios e melhora a sustentabilidade.
-</p>
-
-</div>
-
-<div class="artigo">
-
-<h3>Drones e Sensores</h3>
-
-<p>
-O uso de drones permite monitoramento preciso das lavouras,
-economizando água e defensivos.
-</p>
-
-</div>
-
-</section>
-
-<section id="quiz">
-
-<h2>🧠 Quiz Agro</h2>
-
-<p id="pergunta"></p>
-
-<button onclick="responder(true)">Verdadeiro</button>
-
-<button onclick="responder(false)">Falso</button>
-
-<p id="resultado"></p>
-
-</section>
-
-<section id="jogos">
-
-<h2>🎮 Jogos Educativos</h2>
-
-<button onclick="plantar()">Plantar Árvore</button>
-
-<h3 id="pontuacao">0 Árvores</h3>
-
-</section>
-
-<section id="natureza">
-
-<h2>🌳 Natureza e Sustentabilidade</h2>
-
-<p>
-Produzir alimentos e preservar o meio ambiente caminham juntos.
-</p>
-
-</section>
-
-<section id="ia">
-
-<h2>🤖 IA Agrinho</h2>
-
-<input type="text" id="msg">
-
-<button onclick="perguntar()">
-
-Perguntar
-
-</button>
-
-<div id="chat"></div>
-
-</section>
-
-<footer>
-
-Agrinho 2026 ©
-
-</footer>
-
-<script src="js/script.js"></script>
-
+    <header>
+        <div class="header-overlay">
+            <h1>InovaAgro: O Futuro é Tech</h1>
+            <p>Conectando tecnologia, nutrição, esporte e sustentabilidade no ecossistema do Amanhã.</p>
+        </div>
+    </header>
+
+    <nav>
+        <a href="#sustentabilidade">Sustentabilidade</a>
+        <a href="#artigos">Ciência</a>
+        <a href="#multimidia">Vídeos</a>
+        <a href="#saude">Nutrição & Esporte</a>
+        <a href="#jogos">Quiz Gamer</a>
+        <a href="#ia">IA Agrinho</a>
+    </nav>
+
+    <div class="container">
+
+        <section id="sustentabilidade">
+            <h2>Sustentabilidade & Natureza</h2>
+            <p>No modo escuro da tecnologia, a luz verde guia o campo. A produção em massa de alimentos agora conta com Inteligência Artificial para preservação em tempo real, monitoramento de biomas e pegada de carbono zero.</p>
+            
+            <div class="media-grid">
+                <div class="media-card">
+                    <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad451?auto=format&fit=crop&w=500&q=80" alt="Tecnologia no Campo">
+                    <div class="card-info">
+                        <strong>Agricultura de Precisão</strong>
+                        <p>Drones autônomos com visão térmica noturna.</p>
+                    </div>
+                </div>
+                <div class="media-card">
+                    <img src="https://images.unsplash.com/photo-1463123081488-729f551ee6f2?auto=format&fit=crop&w=500&q=80" alt="Preservação da Natureza">
+                    <div class="card-info">
+                        <strong>Preservação Conectada</strong>
+                        <p>Sensores bioacústicos protegendo a fauna nativa.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="artigos">
+            <h2>Ciência e Inovação Futurista</h2>
+            <div class="artigo">
+                <span class="artigo-tag">Data Science Agro</span>
+                <h3>Sensores IoT na Redução de Recursos Hídricos</h3>
+                <p><em>"Sistemas preditivos baseados em redes neurais artificiais reduziram o desperdício de água em pivôs centrais em até 40%, adaptando o gotejamento conforme a umidade relativa do ar."</em> (Global AgroTech, 2026).</p>
+            </div>
+            <div class="artigo">
+                <span class="artigo-tag">Biotecnologia</span>
+                <h3>Bioinsumos e Regeneração Celular do Solo</h3>
+                <p><em>"Microorganismos bioativados aceleram a fixação de nitrogênio, eliminando a dependência de compostos químicos e limpando o lençol freático."</em> (Nature Agri-Science, 2026).</p>
+            </div>
+        </section>
+
+        <section id="multimidia">
+            <h2>Animações & Vídeos 3D</h2>
+            <p>Explore a modelagem e os desenhos interativos que ensinam a mecânica da sustentabilidade de forma puramente digital.</p>
+            <div class="media-grid">
+                <div class="media-card">
+                    <video controls poster="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=500&q=80">
+                        <source src="seu-video-aqui.mp4" type="video/mp4">
+                    </video>
+                    <div class="card-info">
+                        <strong>Renderização do Ciclo Verde</strong>
+                        <p>Animação gráfica mostrando a fotossíntese otimizada.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="saude">
+            <h2>Bio-Nutrição & Esporte High-Tech</h2>
+            <p>O corpo humano funciona como uma máquina de alta precisão. O alimento que vem do campo sustentável fornece os bioelementos ideais para atletas aumentarem o rendimento muscular e mental.</p>
+            <div class="bloco-destaque">
+                <h4>⚡ Hack de Nutrição do Agrinho:</h4>
+                <p>Consumir alimentos orgânicos cultivados sob luz controlada por LED aumenta os antioxidantes, limpando as toxinas após treinos pesados de e-sports ou esportes de arena!</p>
+            </div>
+        </section>
+
+        <section id="jogos" class="section-quiz">
+            <h2>AgroQuiz Game System</h2>
+            <div class="game-container">
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="quiz-progress"></div>
+                </div>
+                
+                <div id="quiz-area">
+                    <p id="pergunta" class="pergunta-text">Carregando desafios...</p>
+                    <div class="quiz-options-grid">
+                        <button class="quiz-btn-opt" id="opt-0">Opção A</button>
+                        <button class="quiz-btn-opt" id="opt-1">Opção B</button>
+                        <button class="quiz-btn-opt" id="opt-2">Opção C</button>
+                    </div>
+                </div>
+                <p id="resultado-quiz"></p>
+            </div>
+        </section>
+
+        <section id="ia">
+            <h2>Neural AI Agrinho</h2>
+            <p>Consulte a nossa IA Hacker para puxar logs de curiosidades sobre: <strong>Inovação, Esporte, Nutrição, Desenho, Animação ou Natureza</strong>.</p>
+            
+            <div class="chat-box">
+                <div class="chat-header">AGRINHO_AI_v2.0.6_ONLINE</div>
+                <div class="chat-content" id="chatContent">
+                    <div class="msg bot">Terminal iniciado. Insira comandos ou palavras-chave (Ex: 'Inovação') para descriptografar dados do Agro Sustentável.</div>
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="userInput" placeholder="Aguardando comando de texto...">
+                    <button id="btn-enviar">ENVIAR</button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>// PROJETO DESENVOLVIDO PARA O CONCURSO AGRINHO 2026_</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
