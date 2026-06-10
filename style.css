@@ -1,110 +1,103 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agrinho 2026 | Agro Forte, Futuro Sustentável</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI;
+}
 
-    <header>
-        <div class="logo">
-            <h2>Agrinho <span>2026</span></h2>
-        </div>
-        <div id="real-time-widget" class="widget">
-            <div><i class="fa-solid fa-calendar-days"></i> <span id="current-date">--/--/----</span></div>
-            <div><i class="fa-solid fa-clock"></i> <span id="current-time">00:00:00</span></div>
-            <div><i class="fa-solid fa-cloud-sun"></i> <span id="weather-temp">24°C</span> (Paraná)</div>
-            <div><i class="fa-solid fa-droplet"></i> Umidade: <span id="weather-humidity">65%</span></div>
-        </div>
-    </header>
+body{
+background:#0f172a;
+color:white;
+}
 
-    <nav>
-        <a href="#artigos"><i class="fa-solid fa-book-open"></i> Ciência</a>
-        <a href="#midia"><i class="fa-solid fa-video"></i> Tecnologias</a>
-        <a href="#jogos"><i class="fa-solid fa-gamepad"></i> Quiz & Jogos</a>
-        <a href="#nutricao"><i class="fa-solid fa-apple-whole"></i> Nutrição & Esporte</a>
-        <a href="#ia-chatbot"><i class="fa-solid fa-robot"></i> AgroIA</a>
-    </nav>
+header{
+background:#111827;
+padding:20px;
+display:flex;
+justify-content:space-between;
+}
 
-    <main>
-        <section class="hero">
-            <h1>Agro Forte, Futuro Sustentável</h1>
-            <p>O equilíbrio perfeito entre a alta produtividade do campo e a preservação do meio ambiente.</p>
-        </section>
+nav a{
+color:white;
+margin:10px;
+text-decoration:none;
+}
 
-        <section id="artigos" class="section-card">
-            <h2><i class="fa-solid fa-microscope"></i> Inovações Científicas e Sustentabilidade</h2>
-            <div class="grid-container">
-                <div class="card">
-                    <h3>Drons e Sensores IoT</h3>
-                    <p class="quote">"A utilização de sensores de umidade no solo associados a IA reduz o consumo de água na irrigação em até 40%..."</p>
-                    <span class="source">— Revista Brasileira de Engenharia Agrícola (2025)</span>
-                </div>
-                <div class="card">
-                    <h3>Crédito de Carbono no Campo</h3>
-                    <p class="quote">"O plantio direto e a integração lavoura-pecuária-floresta (ILPF) fixam o carbono no solo, mitigando gases estufa..."</p>
-                    <span class="source">— Embrapa Florestas / Senar-PR</span>
-                </div>
-            </div>
-        </section>
+.hero{
+height:100vh;
+position:relative;
+}
 
-        <section id="midia" class="section-card">
-            <h2><i class="fa-solid fa-photo-film"></i> Galeria Tecnológica e Natureza</h2>
-            <div class="media-grid">
-                <div class="media-box">
-                    <div class="placeholder-video">
-                        <i class="fa-solid fa-play-circle fa-3x"></i>
-                        <p>Vídeo: Biotecnologia e Natureza em Harmonia</p>
-                    </div>
-                </div>
-                <div class="media-box">
-                    <div class="placeholder-anim">
-                        <i class="fa-solid fa-seedling fa-3x animate-seed"></i>
-                        <p>Animação: Ciclo de Nutrientes Regenerativo</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+.hero video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
 
-        <section id="nutricao" class="section-card">
-            <h2><i class="fa-solid fa-heart-pulse"></i> Nutrição, Esporte e Vida Saudável</h2>
-            <p>Quem produz alimentos saudáveis também cuida da saúde. O agro sustentável garante comida rica em nutrientes para atletas e famílias, promovendo esportes ao ar livre e contato direto com a natureza pura.</p>
-            <div class="grid-container">
-                <div class="mini-card"><i class="fa-solid fa-carrot"></i> Alimentos Orgânicos</div>
-                <div class="mini-card"><i class="fa-solid fa-person-running"></i> Energia Sustentável</div>
-            </div>
-        </section>
+.overlay{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+text-align:center;
+}
 
-        <section id="jogos" class="section-card">
-            <h2><i class="fa-solid fa-gamepad"></i> Quiz do Agro Sustentável</h2>
-            <div id="quiz-container">
-                <p id="quiz-question">Carregando pergunta...</p>
-                <div id="quiz-options"></div>
-                <button id="next-btn" onclick="nextQuestion()" style="display:none;">Próxima</button>
-            </div>
-        </section>
+.overlay h2{
+font-size:4rem;
+}
 
-        <section id="ia-chatbot" class="section-card">
-            <h2><i class="fa-solid fa-robot"></i> AgroIA — Curiosidades & Dúvidas</h2>
-            <div class="chat-window">
-                <div class="chat-output" id="chat-output">
-                    <p class="bot-msg">Olá! Sou a AgroIA. Pergunte-me sobre curiosidades do Agro, Sustentabilidade, Nutrição, Esportes ou Jogos!</p>
-                </div>
-                <div class="chat-input-area">
-                    <input type="text" id="chat-input" placeholder="Ex: Me conte uma curiosidade sobre sustentabilidade...">
-                    <button onclick="askAI()"><i class="fa-solid fa-paper-plane"></i></button>
-                </div>
-            </div>
-        </section>
-    </main>
+.dashboard{
+padding:50px;
+}
 
-    <footer>
-        <p>&copy; 2026 Concurso Agrinho Paraná - Orgulho de ser Agro Responsável.</p>
-    </footer>
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+.card{
+background:#1e293b;
+padding:30px;
+border-radius:15px;
+text-align:center;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+padding:40px;
+}
+
+.box{
+background:#1e293b;
+border-radius:15px;
+overflow:hidden;
+}
+
+.box img{
+width:100%;
+height:250px;
+object-fit:cover;
+}
+
+section{
+padding:60px;
+}
+
+button{
+padding:12px 25px;
+background:#22c55e;
+border:none;
+border-radius:10px;
+color:white;
+cursor:pointer;
+}
+
+footer{
+padding:20px;
+text-align:center;
+background:#111827;
+}
+
